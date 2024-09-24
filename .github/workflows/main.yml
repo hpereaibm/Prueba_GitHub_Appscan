@@ -1,0 +1,34 @@
+            - name: HCL AppScan Static Analyzer
+  # You may pin to the exact commit or the version.
+  # uses: HCL-TECH-SOFTWARE/appscan-sast-action@287007ca54a816c70ff50d0c68bf3c9bf33a6af3
+  uses: HCL-TECH-SOFTWARE/appscan-sast-action@v1.0.6
+  with:
+    # API key for connecting to the AppScan service.
+    asoc_key: ${{secrets.keyid}}
+    # Secret for connecting to the AppScan service.
+    asoc_secret: ${{secrets.keysecret}}
+    # The url of the AppScan service.
+    service_url: # optional
+    # Allow connections to a service with an untrusted certificate. Recommended for testing purposes only.
+    acceptssl: # optional
+    # The application id where your scan will appear.
+    application_id: 
+    # The name of the scan created in the AppScan service.
+    scan_name: # prueba
+    # Make the scan a personal scan.
+    personal_scan: # optional
+    # Only run static analysis. Do not run SCA (Software Composition Analysis).
+    static_analysis_only: # optional
+    # Only run SCA (Software Composition Analysis). Do not run static analysis.
+    open_source_only: # true
+    # By default only source code files will be analyzed. Enabling this option will result in build output files for Java and .NET to be analyzed (.jar/.war/.ear/.dll/.exe). Additionally, Maven, Gradle, and Visual Studio solutions will be built if the build environment is available.
+    scan_build_outputs: # optional
+    # By default this action will initiate the scan in the AppScan service, but it will not wait for analysis to complete. Enabling this option will cause the action to wait for analysis to complete. Note that this will cause the action to run longer.
+    wait_for_analysis: # optional
+    # If wait_for_analysis is true, the number of minutes to wait for analysis to complete. The default is 30 minutes.
+    analysis_timeout_minutes: # optional, default is 30
+    # If wait_for_analysis is true, fail the job if any non-compliant issues are found in the scan.
+    fail_for_noncompliance: # optional
+    # If fail_for_noncompliance is enabled, the severity that indicates a failure. Lesser severities will not be considered a failure. For example, if failure_threshold is set to Medium, Informational and/or Low severity issues will not cause a failure. Medium, High, and/or Critical issues will cause a failure.
+    failure_threshold: # optional, default is Low
+          
